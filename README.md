@@ -79,3 +79,85 @@
     ```
     curl http://<your-route>/micro/items
     ```
+
+5. Deploy Orders microservice    
+
+    In the `orders-ms-quarkus` directory run the following command:
+
+    `./mvnw clean package -Dquarkus.kubernetes.deploy=true`
+
+    - Now create the route as follows.
+
+    ```
+    oc expose svc orders-ms-quarkus
+    ```
+
+    - Test the service
+
+    ```
+    Todo
+    ```
+
+5. Deploy Customer microservice    
+
+    In the `customer-ms-quarkus` directory run the following command:
+
+    `./mvnw clean package -Dquarkus.kubernetes.deploy=true`
+
+    - Now create the route as follows.
+
+    ```
+    oc expose svc orders-ms-quarkus
+    ```
+
+    - Test the service
+
+    ```
+    Todo
+    ```
+6. Storefront UI running on OpenShift interacting with microservices on OpenShift
+
+    Go to directory `storefront-ui`
+
+    Edit the file `config/production.json` and update the `client_secret` and the multipe `service_name` fields. The service_names will need to reference the routes for the microserices that you deployed earlier.
+
+    Push the changes to your forked copy of the repo:
+
+    Run the command to deploy to OpenShift:
+    ```
+    oc new-app --name storefront-ui https://github.com/<your-git-org>/storefront-ui#hp-quarkus-version
+    ```
+
+    Expose the route
+    ```
+    oc expose service storefront-ui
+    ```
+
+    In a browser, go to the route.
+
+7. Storefront UI running locally interacting with microservices on OpenShift
+
+    Go to directory `storefront-ui`
+
+    Edit the file `config/default.json` and update the `client_secret` and the multipe `service_name` fields. The service_names will need to reference the routes for the microserices that you deployed earlier.
+
+
+    Command to build the docker image:
+    ```
+    appsody build
+    ```
+
+    Command to run the docker container:
+    ```
+    docker run --name web \
+    -e NODE_ENV=development \
+    -p 3000:3000 \
+    -d dev.local/web
+    ```
+
+    In browser, goto: 
+    ```
+    http://localhost:3000
+    ```
+
+    You can login as user `foo` pw `bar`.
