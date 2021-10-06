@@ -1,4 +1,4 @@
-# documentation
+# Guide to Installing the Storefront Demo on OpenShift
 
 
 
