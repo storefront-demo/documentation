@@ -135,7 +135,7 @@
 
     In a browser, go to the route.
 
-7. Storefront UI running locally interacting with microservices on OpenShift
+7. Storefront UI running locally interacting with microservices on OpenShift (Optional)
 
     Go to directory `storefront-ui`
 
