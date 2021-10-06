@@ -1,6 +1,10 @@
 # Guide to Installing the Storefront Demo on OpenShift
 
+## Pre-requisites
 
+- OpenShift cluster provisioned
+- Java 11 on your local machine
+- OpenShift oc cli installed on your local machine
 
 ## OpenShift Installation
 
