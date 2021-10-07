@@ -116,7 +116,7 @@
     - Now create the route as follows.
 
     ```
-    oc expose svc catalog-ms-quarkus
+    oc expose svc customer-ms-quarkus
     ```
 
     - Test the service
