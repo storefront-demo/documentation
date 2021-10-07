@@ -39,7 +39,16 @@
 
     - Test KeyCloak:  TODO
 
-4. Deploy Inventory microservice
+4. Create Secret ibm-java-en
+
+    Create secret `ibm-java-env` in the OpenShift project containing the microservices.
+    ```
+    oc create secret generic ibm-java-env --from-literal=KEYCLOAK_CLIENT_ID=bluecomputeweb --from-literal=KEYCLOAK_CLIENT_SECRET=<your-client-secret-from-keycloak> -n storefront-dev
+    ```
+
+    This secret is used by the `orders` and `catalog` microservices.
+
+5. Deploy Inventory microservice
 
     In the `inventory-ms-quarkus` directory run the following command:
 
@@ -56,7 +65,7 @@
     // invoke the inventory api
     curl http://localhost:8080/micro/inventory
     ```
-5. Deploy Catalog microservice
+6. Deploy Catalog microservice
 
     In the `catalog-ms-quarkus` directory run the following command:
 
@@ -80,7 +89,7 @@
     curl http://<your-route>/micro/items
     ```
 
-5. Deploy Orders microservice    
+7. Deploy Orders microservice    
 
     In the `orders-ms-quarkus` directory run the following command:
 
@@ -98,7 +107,7 @@
     Todo
     ```
 
-5. Deploy Customer microservice    
+8. Deploy Customer microservice    
 
     In the `customer-ms-quarkus` directory run the following command:
 
@@ -115,7 +124,7 @@
     ```
     Todo
     ```
-6. Storefront UI running on OpenShift interacting with microservices on OpenShift
+9. Storefront UI running on OpenShift interacting with microservices on OpenShift
 
     Go to directory `storefront-ui`
 
@@ -135,7 +144,7 @@
 
     In a browser, go to the route.
 
-7. Storefront UI running locally interacting with microservices on OpenShift (Optional)
+10. Storefront UI running locally interacting with microservices on OpenShift (Optional)
 
     Go to directory `storefront-ui`
 
