@@ -1,0 +1,490 @@
+{
+	"info": {
+		"_postman_id": "2f2037cd-2488-4a63-b5c8-87bc59b37efb",
+		"name": "gymathlete-verify-ibm-com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Email OTP",
+			"item": [
+				{
+					"name": "Initiate new transient Email OTP verification txn Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"expect status code to be 201\", function() {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"expect response body to exist\", function() {",
+									"   pm.response.to.have.body();",
+									"});",
+									"",
+									"pm.test(\"expect response body to have id\", function() {",
+									"   pm.response.to.have.jsonBody(\"id\");",
+									"   let jsonData = JSON.parse(responseBody);",
+									"   pm.environment.set(\"email_txnid\", jsonData.id);",
+									"   pm.environment.set(\"emailotp_id\", \"transient\");",
+									"});",
+									"",
+									"pm.test(\"expect email_txnid to be set\", function () { ",
+									"    pm.expect(pm.environment.get(\"email_txnid\")).to.exist; ",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{admin_access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"emailAddress\": \"{{test_email}}\"\r\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/v2.0/factors/emailotp/transient/verifications",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v2.0",
+								"factors",
+								"emailotp",
+								"transient",
+								"verifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify an Email OTP verification txn",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"expect status code to be 204\", function() {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"pm.test(\"expect response body to contain assertion\", function() {",
+									"   pm.response.to.have.jsonBody(\"assertion\");",
+									"   let jsonData = JSON.parse(responseBody);",
+									"   pm.environment.set(\"interim_jwt\", jsonData.assertion);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{admin_access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"otp\": \"463998\" \r\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/v2.0/factors/emailotp/{{emailotp_id}}/verifications/{{email_txnid}}?returnJwt=true",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v2.0",
+								"factors",
+								"emailotp",
+								"{{emailotp_id}}",
+								"verifications",
+								"{{email_txnid}}"
+							],
+							"query": [
+								{
+									"key": "returnJwt",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tokens",
+			"item": [
+				{
+					"name": "user login token (user foo)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"client_access_token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "foo",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "passw0rd",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "7fe33d64-f3ee-47ce-b935-602aae038caa",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "RKm07apXZS",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "openid",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{scheme}}://{{hostname}}/v1.0/endpoint/default/token",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v1.0",
+								"endpoint",
+								"default",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin access token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"admin_access_token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{admin_client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{admin_client_secret}}",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "openid",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "profile",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{scheme}}://{{hostname}}/v1.0/endpoint/default/token",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v1.0",
+								"endpoint",
+								"default",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "misc",
+			"item": [
+				{
+					"name": "openid-configuration",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gymathlete.verify.ibm.com/oidc/endpoint/default/.well-known/openid-configuration",
+							"protocol": "https",
+							"host": [
+								"gymathlete",
+								"verify",
+								"ibm",
+								"com"
+							],
+							"path": [
+								"oidc",
+								"endpoint",
+								"default",
+								".well-known",
+								"openid-configuration"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SMS OTP",
+			"item": [
+				{
+					"name": "Create a SMS OTP Verification",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"id_sms_otp\", jsonData.id);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{admin_access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"phoneNumber\": \"{{phone_number}}\",\r\n  \"correlation\": \"{{correlation}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{scheme}}://{{hostname}}/v2.0/factors/smsotp/transient/verifications",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v2.0",
+								"factors",
+								"smsotp",
+								"transient",
+								"verifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify  s SMS OTP Verification",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{admin_access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"otp\": \"831419\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{scheme}}://{{hostname}}/v2.0/factors/smsotp/transient/verifications/{{id_sms_otp}}",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"v2.0",
+								"factors",
+								"smsotp",
+								"transient",
+								"verifications",
+								"{{id_sms_otp}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "create user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (responseBody !== null){",
+							"    if (responseBody.has(\"id\")) {",
+							"        var jsonData = JSON.parse(responseBody);",
+							"        postman.setEnvironmentVariable(\"user_id\", jsonData.id);",
+							"                postman.setEnvironmentVariable(\"stub_user_name\", jsonData.userName);",
+							"",
+							"    }",
+							"}",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{admin_access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/scim+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userName\": \"{{user_name}}\",\n  \"displayName\": \"{{user_name}}\",\n  \"name\": {\n       \"familyName\": \"{{family_name}}\",\n       \"middleName\": \"{{middle_name}}\"\n     },\n  \"phoneNumbers\" : [\n    {\n      \"value\": \"{{phone_number}}\",\n      \"type\": \"mobile\"\n    }\n  ],\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:User\",\n    \"urn:ietf:params:scim:schemas:extension:ibm:2.0:User\"\n  ],\n  \"urn:ietf:params:scim:schemas:extension:ibm:2.0:User\": {\n    \"customAttributes\": [\n      {\n        \"values\": [\n          \"{{otu_token}}\"\n        ],\n        \"name\": \"OTURegToken\"\n      },\n      {\n        \"values\": [\n          \"{{orgID}}\"\n        ],\n        \"name\": \"OrgID\"\n      },\n      {\n        \"values\": [\n          \"true\"\n        ],\n        \"name\": \"orgadmin\"\n      }\n    ]\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{scheme}}://{{hostname}}/v2.0/Users?notifyType=NONE",
+					"protocol": "{{scheme}}",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"v2.0",
+						"Users"
+					],
+					"query": [
+						{
+							"key": "notifyType",
+							"value": "NONE"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
