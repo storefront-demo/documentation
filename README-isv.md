@@ -9,7 +9,7 @@ This version of the storefront app is using IBM Security Verify as the identity 
 - OpenShift oc cli installed on your local machine
 - Appsody cli
 - Docker
-- 
+
 ## Set up IBM Security Verify Tenant
 
 IBM Cloud Identity
