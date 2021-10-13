@@ -21,15 +21,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://customer-ms-quarkus-storefront-isv.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud/micro/customer",
+					"raw": "http://customer-ms-quarkus-storefront-isv.{{openshift_hostname}}/micro/customer",
 					"protocol": "http",
 					"host": [
 						"customer-ms-quarkus-storefront-isv",
-						"itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000",
-						"us-south",
-						"containers",
-						"appdomain",
-						"cloud"
+						"{{openshift_hostname}}"
 					],
 					"path": [
 						"micro",

@@ -36,7 +36,7 @@
 			"response": []
 		},
 		{
-			"name": "orders (openshift service keycloak)",
+			"name": "orders (openshift route keycloak)",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -51,15 +51,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://orders-ms-quarkus-storefront-dev.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud/micro/orders",
+					"raw": "http://orders-ms-quarkus-storefront-dev.{{openshift_hostname}}/micro/orders",
 					"protocol": "http",
 					"host": [
 						"orders-ms-quarkus-storefront-dev",
-						"itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000",
-						"us-south",
-						"containers",
-						"appdomain",
-						"cloud"
+						"{{openshift_hostname}}"
 					],
 					"path": [
 						"micro",
@@ -70,7 +66,7 @@
 			"response": []
 		},
 		{
-			"name": "orders (openshift service ISV)",
+			"name": "orders (openshift route ISV)",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -85,15 +81,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://orders-ms-quarkus-storefront-isv.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud/micro/orders",
+					"raw": "http://orders-ms-quarkus-storefront-isv.{{openshift_hostname}}/micro/orders",
 					"protocol": "http",
 					"host": [
 						"orders-ms-quarkus-storefront-isv",
-						"itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000",
-						"us-south",
-						"containers",
-						"appdomain",
-						"cloud"
+						"{{openshift_hostname}}"
 					],
 					"path": [
 						"micro",
