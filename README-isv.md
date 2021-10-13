@@ -3,17 +3,38 @@
 This version of the storefront app is using IBM Security Verify as the identity provider and installs the app in the `storefront-isv` namespace.
 
 ## Pre-requisites
-
 - OpenShift cluster provisioned
-- IBM Security Verify tenant provisioned
+- IBM Security Verify tenant provisioned (see below)
 - Java 11 on your local machine
 - OpenShift oc cli installed on your local machine
 - Appsody cli
 - Docker
+- 
+## Set up IBM Security Verify Tenant
+
+IBM Cloud Identity
+IBM Cloud Identity is an Identity-as-a-Service (IDaaS) and Authentication-as-a-Service (AaaS) platform. In this demonstration system it provides all of the authentication and identity services required by the demonstration application. Integration is via REST API.
+If you do not have an IBM Cloud Identity tenant, you must complete at least **Exercises 1 and 2** from the [IBM Cloud Identity Basics Cookbook](https://ibm.ent.box.com/s/zyqa0qpdjfsy45q4guih09o6ehrsnif1) as a pre-requisite for this cookbook.
+
+Once you are logged into the IBM Security Verify Tenant, you will need to add an application to your tenant. 
+1. Go to Applications menu on left hand and click Add application
+2. Select Custom Application and click Add application
+3. Complete name, description, and company name (values don't matter)
+4. Under “sign on” tab, select “sign on method” as OpenID Connect, then select the grant type as “Resource Owner Password Credentials (ROPC)” and access token format as “JWT”
+5. In entitlements tab:
+        1. Select: All users are entitled to this application
+        2. Click Save
+6. Return to Sign-on tab:
+        1. Make a note of (Application)Client ID and Client Secret
+7.  Next select "API access" tab API Access tab and click Add API client
+8. Complete name (value doesn't matter)
+9. Select “all” for API access
+10. Select access token format as "JWT." 
+11. Click Save
+12. Select new client and edid
+        1. Make a note of Client ID and Client Secret
 
 ## OpenShift Installation
-
-
 
 1. Clone all the repos in the `https://github.com/storefront-demo`
 
