@@ -1,0 +1,242 @@
+{
+	"info": {
+		"_postman_id": "fb13c0f1-9299-448b-a59b-0e8f61ea20fe",
+		"name": "KeyCloak",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get token (openshift keycloak service)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "bluecomputeweb",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "b7f4d532-cd1d-4a13-a46b-b035bc19fa46",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "foo",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "bar",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:8443/auth/realms/sfrealm/protocol/openid-connect/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"auth",
+						"realms",
+						"sfrealm",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get token (openshift keycloak route)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "bluecomputeweb",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "b7f4d532-cd1d-4a13-a46b-b035bc19fa46",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "foo",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "bar",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://keycloak-keycloak.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud/auth/realms/sfrealm/protocol/openid-connect/token",
+					"protocol": "https",
+					"host": [
+						"keycloak-keycloak",
+						"itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000",
+						"us-south",
+						"containers",
+						"appdomain",
+						"cloud"
+					],
+					"path": [
+						"auth",
+						"realms",
+						"sfrealm",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get token (localhost Docker)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "bluecomputeweb",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "bac87c90-59ca-4b8d-a838-49a99101d002",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "foo",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "bar",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8085/auth/realms/sfrealm/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"auth",
+						"realms",
+						"sfrealm",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user info (openshift keycloak route)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI3cXdhSmtFU2VMNWpTT2xTWjFjTk5xaVVpQ2lSbExYY0xRRmRrZFU5bDBRIn0.eyJleHAiOjE2MzM2NDUyNDQsImlhdCI6MTYzMzY0MzQ0NCwianRpIjoiNWE0NTY5ZmItY2VhYy00YzcyLTlkNTYtNzYyYmVkMjc2ZjJiIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1rZXljbG9hay5pdHpyb2tzLTEyMDAwMGYwZTctbmgxajJpLTZjY2Q3ZjM3OGFlODE5NTUzZDM3ZDVmMmVlMTQyYmQ2LTAwMDAudXMtc291dGguY29udGFpbmVycy5hcHBkb21haW4uY2xvdWQvYXV0aC9yZWFsbXMvc2ZyZWFsbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJhMjAwNTFlMC1mYjQzLTRiY2MtOGJlZi1jNzM0N2IxOTdhODAiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJibHVlY29tcHV0ZXdlYiIsInNlc3Npb25fc3RhdGUiOiJkM2YyZTJmYS1iMjRmLTRlZjItOWFkYy0wMjExM2E0MWIwNWEiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9sb2NhbGhvc3Q6ODA4MCJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInVzZXIiLCJkZWZhdWx0LXJvbGVzLXNmcmVhbG0iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwic2lkIjoiZDNmMmUyZmEtYjI0Zi00ZWYyLTlhZGMtMDIxMTNhNDFiMDVhIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiRm9vIEJhciIsInByZWZlcnJlZF91c2VybmFtZSI6ImZvbyIsImdpdmVuX25hbWUiOiJGb28iLCJmYW1pbHlfbmFtZSI6IkJhciIsImVtYWlsIjoiZm9vQGdtYWlsLmNvbSJ9.FbnTOQwOOEP6dA0XE82KIg1YrNNDDl61fKiMxgvkK8aq_fO5u04SD4dBIX7b0nIwun1rPmZkYHbCUYMk-49hJqYAcoHwp50KRGs_F_8QSt0aEBV01_WdctxpD2BYwgDx0OGvwfhjswoWjduNO5UokGyPJqb5PM-_DGjogehsDS8ojWf2rbwNiLRbPbFAKt1y6xYLoVTx-Nu8QtzwgtnS_gFpYn3y-LdUNOOmnIqaHuid9p2er8iR2NueNFAGbiRQHIHTPBwNGN72WOpTTvujOUQk69MsTs0ymH2E-4axMme__ZAD6gNJcQ13UfsHXRbCsqFWvJXEROsNgKkN2YtdeQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://keycloak-keycloak.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud/auth/realms/sfrealm/protocol/openid-connect/userinfo",
+					"protocol": "https",
+					"host": [
+						"keycloak-keycloak",
+						"itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000",
+						"us-south",
+						"containers",
+						"appdomain",
+						"cloud"
+					],
+					"path": [
+						"auth",
+						"realms",
+						"sfrealm",
+						"protocol",
+						"openid-connect",
+						"userinfo"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

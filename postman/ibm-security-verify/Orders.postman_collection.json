@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "12babc5b-19f5-46db-8a22-7a04f41183bb",
+		"name": "Orders",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "orders (local)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI3cXdhSmtFU2VMNWpTT2xTWjFjTk5xaVVpQ2lSbExYY0xRRmRrZFU5bDBRIn0.eyJleHAiOjE2MzM3Mjk4MzUsImlhdCI6MTYzMzcyODAzNSwianRpIjoiNDY4MzJiM2ItNzA5Zi00NjA4LWJhZDYtM2YyMWMxNjA0M2UyIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1rZXljbG9hay5pdHpyb2tzLTEyMDAwMGYwZTctbmgxajJpLTZjY2Q3ZjM3OGFlODE5NTUzZDM3ZDVmMmVlMTQyYmQ2LTAwMDAudXMtc291dGguY29udGFpbmVycy5hcHBkb21haW4uY2xvdWQvYXV0aC9yZWFsbXMvc2ZyZWFsbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJhMjAwNTFlMC1mYjQzLTRiY2MtOGJlZi1jNzM0N2IxOTdhODAiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJibHVlY29tcHV0ZXdlYiIsInNlc3Npb25fc3RhdGUiOiIzNWZiM2RiNS0yNTg5LTQ3MjQtYTllZS1lMzE5ZTM2ZWU2YzYiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9sb2NhbGhvc3Q6ODA4MCJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInVzZXIiLCJkZWZhdWx0LXJvbGVzLXNmcmVhbG0iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwic2lkIjoiMzVmYjNkYjUtMjU4OS00NzI0LWE5ZWUtZTMxOWUzNmVlNmM2IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiRm9vIEJhciIsInByZWZlcnJlZF91c2VybmFtZSI6ImZvbyIsImdpdmVuX25hbWUiOiJGb28iLCJmYW1pbHlfbmFtZSI6IkJhciIsImVtYWlsIjoiZm9vQGdtYWlsLmNvbSJ9.ITQeiDzPjYGytX7tvMRx6Gg_TeLpvGAf7FKjsOpmrd_MQVG5VTW1ImYaizmyFrgphT6uBRPAzxUqJMp4Jao23DKThN6EqtA_uvYNcSZ-Y0NrfArrCyta5OJKDCO_M22y03flgmIv1yrh0A2XUMleQEB3M2iBbHjlaPhCxqIevWqw-1s2EbgCUjgoHr4j5yLM3ZkeKrM4rTibf4nCuKaQaDHnuwxcaQEzci4vGSx2V-5Y8P5T0X2nUD3Uf5l6v_kHPgD-Qs8IkPuGiOlnpoSS708zBgPcQSUb6OJH601TrhhxS071rms7jNZAKFjsR2LsNECeGpRejtOSxZWHAHOpzQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/micro/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"micro",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "orders (openshift service keycloak)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://orders-ms-quarkus-storefront-dev.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud/micro/orders",
+					"protocol": "http",
+					"host": [
+						"orders-ms-quarkus-storefront-dev",
+						"itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000",
+						"us-south",
+						"containers",
+						"appdomain",
+						"cloud"
+					],
+					"path": [
+						"micro",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "orders (openshift service ISV)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{client_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://orders-ms-quarkus-storefront-isv.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud/micro/orders",
+					"protocol": "http",
+					"host": [
+						"orders-ms-quarkus-storefront-isv",
+						"itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000",
+						"us-south",
+						"containers",
+						"appdomain",
+						"cloud"
+					],
+					"path": [
+						"micro",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
