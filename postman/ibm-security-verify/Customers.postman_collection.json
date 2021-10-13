@@ -21,10 +21,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://customer-ms-quarkus-storefront-isv.{{openshift_hostname}}/micro/customer",
+					"raw": "http://{{customer_service}}.{{openshift_hostname}}/micro/customer",
 					"protocol": "http",
 					"host": [
-						"customer-ms-quarkus-storefront-isv",
+						"{{customer_service}}",
 						"{{openshift_hostname}}"
 					],
 					"path": [

@@ -36,37 +36,7 @@
 			"response": []
 		},
 		{
-			"name": "orders (openshift route keycloak)",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://orders-ms-quarkus-storefront-dev.{{openshift_hostname}}/micro/orders",
-					"protocol": "http",
-					"host": [
-						"orders-ms-quarkus-storefront-dev",
-						"{{openshift_hostname}}"
-					],
-					"path": [
-						"micro",
-						"orders"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "orders (openshift route ISV)",
+			"name": "orders",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -81,10 +51,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://orders-ms-quarkus-storefront-isv.{{openshift_hostname}}/micro/orders",
+					"raw": "http://{{orders_service}}.{{openshift_hostname}}/micro/orders",
 					"protocol": "http",
 					"host": [
-						"orders-ms-quarkus-storefront-isv",
+						"{{orders_service}}",
 						"{{openshift_hostname}}"
 					],
 					"path": [

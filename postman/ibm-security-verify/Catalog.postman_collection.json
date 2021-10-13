@@ -1,0 +1,29 @@
+{
+	"info": {
+		"_postman_id": "f9f28656-22ff-48db-8320-8369761e1f12",
+		"name": "Catalog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get items from catalog",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{catalog_service}}.{{openshift_hostname}}/micro/items",
+					"protocol": "http",
+					"host": [
+						"{{catalog_service}}",
+						"{{openshift_hostname}}"
+					],
+					"path": [
+						"micro",
+						"items"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
