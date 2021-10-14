@@ -22,17 +22,17 @@ Once you are logged into the IBM Security Verify Tenant, you will need to add an
 3. Complete name, description, and company name (values don't matter)
 4. Under “sign on” tab, select “sign on method” as OpenID Connect, then select the grant type as “Resource Owner Password Credentials (ROPC)” and access token format as “JWT”
 5. In entitlements tab:
-- Select: All users are entitled to this application
-- Click Save
+    - Select: All users are entitled to this application
+    - Click Save
 6. Return to Sign-on tab
--  make a note of (Application)Client ID and Client Secret
+    -  make a note of (Application)Client ID and Client Secret
 8.  Next select "API access" tab API Access tab and click Add API client
 9. Complete name (value doesn't matter)
 10. Select “all” for API access
-- Select access token format as "JWT." 
+    - Select access token format as "JWT." 
 12. Click Save
 13. Select new client and edid
-- Make a note of Client ID and Client Secret
+    - Make a note of Client ID and Client Secret
 
 ## OpenShift Installation
 
