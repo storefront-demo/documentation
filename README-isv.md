@@ -177,7 +177,7 @@ Once you are logged into the IBM Security Verify Tenant, you will need to add an
     git checkout hp-quarkus-version-isv
     ```
 
-    Edit the file `config/default.json` and update the `client_secret` and the multipe `service_name` fields. The service_names will need to reference the routes for the microserices that you deployed earlier.
+    Edit the file `config/default.json` and update the `client_secret`, `client_id` and the multipe `service_name` fields. The service_names will need to reference the routes for the microserices that you deployed earlier.
     
     ```
     # Build storefront ui docker image
