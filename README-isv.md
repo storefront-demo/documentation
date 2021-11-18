@@ -115,6 +115,13 @@ Once you are logged into the IBM Security Verify Tenant, you will need to add an
 
     ```
     git checkout isv
+    ```
+    
+    Go to `src`>`main`>`resources`>`application.properties` and point `quarkus.oidc.auth-server-url` to `https://<isv-host-name>/oidc/endpoint/default`.
+    
+    Run the below command to deploy.
+    
+    ```
     ./mvnw clean package -Dquarkus.kubernetes.deploy=true
     ```
 
@@ -132,6 +139,13 @@ Once you are logged into the IBM Security Verify Tenant, you will need to add an
 
     ```
     git checkout isv
+    ```
+    
+    Go to `src`>`main`>`resources`>`application.properties` and point `quarkus.oidc.auth-server-url` to `https://<isv-host-name>/oidc/endpoint/default`.
+    
+    Run the below command to deploy.
+    
+    ```
     ./mvnw clean package -Dquarkus.kubernetes.deploy=true
     ```
 
