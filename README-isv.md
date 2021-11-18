@@ -178,19 +178,23 @@ Once you are logged into the IBM Security Verify Tenant, you will need to add an
     ```
 
     Edit the file `config/default.json` and update the `client_secret` and the multipe `service_name` fields. The service_names will need to reference the routes for the microserices that you deployed earlier.
-
-
-    Command to build the docker image:
+    
     ```
-    appsody build
-    ```
+    # Build storefront ui docker image
+    docker build -t storefront-ui .
 
-    Command to run the docker container:
-    ```
+    # Start the Storefront UI Container in dev mode
     docker run --name web \
-    -e NODE_ENV=development \
-    -p 3000:3000 \
-    -d dev.local/web
+      -e NODE_ENV=development \
+      -p 3000:3000 \
+      -d storefront-ui
+
+    # or
+
+    # Start the Storefront UI Container in production mode
+    docker run --name web \
+      -p 3000:3000 \
+      -d storefront-ui
     ```
 
     In browser, goto: 
