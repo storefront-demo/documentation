@@ -168,11 +168,11 @@ Once you are logged into the IBM Security Verify Tenant, you will need to add an
 
     Edit the file `config/production.json` and update the `client_secret`, `client_id` and the multipe `service_name` fields. The service_names will need to reference the routes for the microserices that you deployed earlier.
 
-    Push the changes to your forked copy of the repo:
-
-    Run the command to deploy to OpenShift:
+    Run the commands to deploy to OpenShift:
     ```
-    oc new-app --name storefront-ui https://github.com/<your-git-org>/storefront-ui#hp-quarkus-version-isv
+    oc new-build --name=storefront-ui --binary=true
+    oc start-build storefront-ui --from-dir=storefront-ui --follow
+    oc new-app --image-stream=storefront-ui
     ```
 
     Expose the route
@@ -181,6 +181,28 @@ Once you are logged into the IBM Security Verify Tenant, you will need to add an
     ```
 
     In a browser, go to the route.
+    
+    Optionally, if you want to seucure the route using https:
+    ```
+    oc edit route storefront-ui
+    ```
+    
+    Modify the `spec` section as follows:
+    ```
+    spec:
+      host: storefront-ui-storefront-isv.mycluster-dal10-b3-395793-21fccf5f2d8b0395ffcdb911140639db-0000.us-south.containers.appdomain.cloud
+      port:
+        targetPort: 3000-tcp
+      to:
+        kind: Service
+        name: storefront-ui
+        weight: 100
+        tls:
+          termination: edge
+      wildcardPolicy: None
+    ```
+    
+    And now you should be able to access https://<storefront-ui-route-url>
 
 10. Storefront UI running locally interacting with microservices on OpenShift (Optional)
 
