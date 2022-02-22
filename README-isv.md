@@ -1,4 +1,4 @@
-# Guide to Installing the Storefront Demo on OpenShift using IBM Security Verify as the IDP
+# Guide to Installing the Storefront Demo on OpenShift Using IBM Security Verify as the IDP
 
 This version of the storefront app is using IBM Security Verify as the identity provider and installs the app in the `storefront-isv` namespace.
 
